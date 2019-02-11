@@ -15,7 +15,7 @@ class UserManager(BaseUserManager):
         if not password:
             raise ValueError("users must have a password")
 
-        user = self.model(email=self.normalize_email(email), **extra_fields)
+        user = self.model(email=self.normalize_email(email),**extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -29,11 +29,31 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model that supports using email instead of username"""
+    CHOICES = (
+        ('BASE', 'Base'),
+        ('MEDIUM', 'Medium'),
+        ('TOP', 'Top'),
+    )
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
+    is_admin = models.BooleanField(default=False)
+    user_choice = models.CharField(max_length=15, choices=CHOICES, default='BASE',)
+
 
     objects = UserManager()
     USERNAME_FIELD = 'email'
+
+class Employee(models.Model):
+
+    name = models.CharField(max_length=100)
+    age = models.CharField(max_length=100)
+    salary = models.IntegerField(null=False)
+    dob = models.CharField(max_length=100)
+    gender = models.CharField(max_length=100)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name

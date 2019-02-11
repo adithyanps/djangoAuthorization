@@ -28,5 +28,4 @@ services:
       - POSTGRES_DB=app1
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=supersecretpassword
-    ports:
-      - "9999:5432"
+  
