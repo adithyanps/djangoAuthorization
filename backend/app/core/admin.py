@@ -5,10 +5,8 @@ from core import models
 from django.utils.translation import gettext as _
 from core import models
 
-# Register your models here.
 
 # Register your models here.
-
 
 
 class UserAdmin(BaseUserAdmin):
@@ -27,3 +25,7 @@ class UserAdmin(BaseUserAdmin):
         }),
     )
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Customer)
+admin.site.register(models.Items)
+admin.site.register(models.P_Invoice)
+admin.site.register(models.C_Invoice)

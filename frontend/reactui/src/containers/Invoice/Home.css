@@ -1,0 +1,22 @@
+.Box {
+    margin: 100px auto;
+    width: 40%;
+    text-align: center;
+    /* box-shadow: 0 2px 3px #ccc; */
+    border: 1px solid #eee;
+    padding: 50px;
+    box-sizing: border-box;
+    background-color: white;
+
+}
+.Box1 {
+    margin: 100px auto;
+    width: 70%;
+    text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 50px;
+    box-sizing: border-box;
+    background-color: white;
+
+}

@@ -5,8 +5,14 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
+    "chart.js": "^2.7.3",
+    "highcharts": "^7.0.3",
+    "highcharts-react": "0.0.3",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.1",
     "react": "^16.8.1",
     "react-bootstrap": "^1.0.0-beta.5",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
@@ -29,5 +35,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "react-highcharts": "^16.0.2"
+  }
 }

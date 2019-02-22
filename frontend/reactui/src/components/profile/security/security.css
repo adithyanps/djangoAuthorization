@@ -1,0 +1,19 @@
+.SecurityBox1 {
+    margin: 10px auto;
+    width: 80%;
+    text-align:center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 60px;
+    box-sizing: border-box;
+    background-color: white;
+
+}
+.color {
+	color: black;
+	text-shadow: 2px 2px 5px blue;
+}
+.box{
+  text-align: center;
+  width: 80%;
+}

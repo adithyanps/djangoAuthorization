@@ -5,14 +5,20 @@ from rest_framework import generics
 from django.views import View
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
+from django.contrib.auth import get_user_model
+from rest_framework import filters
 
 from user.serializers import UserSerializer, AuthTokenSerializer
 from rest_framework import generics, authentication, permissions
 # Create your views here.
 
-class CreateUserView(generics.CreateAPIView):
+class CreateUserView(generics.ListCreateAPIView):
     """Create a new user in the system"""
+    queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ("name","email")
 
 
 class CreateTokenView(ObtainAuthToken):
