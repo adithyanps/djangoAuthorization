@@ -23,7 +23,7 @@ class Navbars extends Component {
             <NavDropdown title="Charts" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/chart">Chart</NavDropdown.Item>
               <NavDropdown.Item href="/cusomers-linechart">customers-linechart</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item href="/yearchart">yearchart</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>

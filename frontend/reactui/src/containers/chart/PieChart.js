@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Pie} from 'react-chartjs-2';
+import {Pie,Doughnut} from 'react-chartjs-2';
 import axios from '../../axios';
 
 class PieChartComponent extends Component{
@@ -52,9 +52,11 @@ componentDidMount() {
    {
       return(
          <div>
-            <Pie
+            <Doughnut
               data={this.state.Data}
-              options={{maintainAspectRatio: true}}
+              width={100}
+              height={500}
+              options={{maintainAspectRatio: false}}
         />
          </div>
       )

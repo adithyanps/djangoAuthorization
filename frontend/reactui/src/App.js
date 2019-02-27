@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import { withRouter} from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Switch , Route ,Redirect} from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import axios from './axios';
 
 import * as actions from './store/actions/index';
@@ -17,24 +16,23 @@ import UserProfile from './containers/Profile';
 import Security from './components/profile/security/security';
 import Default from './containers/Default';
 
-import Chart from './containers/chart';
-
 import Invoice from './containers/Invoice/Home';
 import Orders from './containers/Invoice/Orders';
+
+import Chart from './containers/chart';
 import CustomersLineChart from './components/Chart/LineChart/CustomersChart';
+import YearChart from './Chart/Bar/YearChart';
 
-
+import GAuth from './containers/GoogleAuth/GoogleAuth';
 
 class App extends Component {
+
   componentDidMount(){
-
     this.props.onTryAutoSignup()
-
   }
   render() {
     let token = null;
     token = this.props.loginToken
-
     let routes = (
       <Switch>
         <Route  path="/" exact component={Home} />
@@ -46,28 +44,23 @@ class App extends Component {
         <Route  path="/orders" component={Orders} />
         <Route  path="/orders" component={Orders} />
         <Route  path="/cusomers-linechart" component={CustomersLineChart} />
-
-
+        <Route  path="/yearchart" component={YearChart} />
+        <Route  path="/auth" component={GAuth} />
 
       </Switch>
-
     )
     if (token) {
       routes =(
         <Switch>
           <Route path="/" exact component={Home} />
           <Route  path="/chart" exact component={Chart} />
-
           <Route path="/profile" component={UserProfile} />
           <Route path="/secure" component={Security} />
-
           <Route path="/login" component={Login} />
           <Route  path="/logout" component={Logout} />
-
         </Switch>
       )
     }
-
 
     return (
       <div className="App">
@@ -79,11 +72,13 @@ class App extends Component {
     );
   }
 }
+
 const mapStateToProps = (state)=> {
   return {
     loginToken:state.login.token,
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     onTryAutoSignup: () => dispatch(actions.authCheckState()),
@@ -91,6 +86,5 @@ const mapDispatchToProps = dispatch => {
 
   }
 }
-
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));

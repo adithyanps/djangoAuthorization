@@ -26,7 +26,9 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     search_fields = ("name",)
     def get_queryset(self):
         """Retrieve the recipes for the authenticated user"""
-        return self.queryset.filter(user=self.request.user)
+        return self.queryset.filter(user=self.request.user).order_by('id')
+
+
     def perform_create(self, serializer):
         """Create a new tag"""
 

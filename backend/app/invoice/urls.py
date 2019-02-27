@@ -5,18 +5,15 @@ from .views import (
             CustomerViewset,
             ItemViewset,
             P_InvoiceViewset,C_InvoiceViewset,
-            Chart,DateChart
+            UserChartViewset,YearChartViewset
             )
 router = DefaultRouter()
 router.register('customer', CustomerViewset)
 router.register('items', ItemViewset)
 router.register('invoice', P_InvoiceViewset)
-router.register('item', C_InvoiceViewset)
-# router.register('chart', Chart)
-
-
-
-
+router.register('childitem', C_InvoiceViewset)
+router.register('yearchart', YearChartViewset, base_name='tasks')
+router.register('userchart', UserChartViewset, base_name='userchart')
 
 app_name = 'invoice'
 
@@ -24,9 +21,6 @@ urlpatterns = [
 
     path('',include(router.urls)),
     # path('userchart/',Chart.as_view({'get': 'list'})),
-    path('userchart/',Chart.as_view()),
-
-    # path('test/',DateChart.as_view({'get': 'list'})),
-
-
+    # path('userchart/',Chart.as_view()),
+    # path('yearchart/',YearChart.as_view({'get': 'list'})),
 ]

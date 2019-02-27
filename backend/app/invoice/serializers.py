@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.models import Customer,Items,P_Invoice,C_Invoice
+from core.models import Customer,Items,P_Invoice,C_Invoice,DateChart,CustomersYearChart
 
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -57,14 +57,23 @@ class P_InvoiceSerializer(serializers.ModelSerializer):
             album.save()
         return instance
 
-class ChartSerializer(serializers.ModelSerializer):
+class UserChartSerializer(serializers.ModelSerializer):
+    """get user and its price field"""
 
     class Meta:
         model = P_Invoice
         fields = ("id","name","total_amount")
 
 class DateChartSerializer(serializers.ModelSerializer):
+    """get all year and its total_amount"""
 
     class Meta:
-        models = P_Invoice
-        fields = ("id","date","total_amount")
+        model = DateChart
+        fields = ("year","total_amount")
+
+class CustomersYearChartSerializer(serializers.ModelSerializer):
+    """get all user and obtain total_amount based on month"""
+
+    class Meta:
+        model = CustomersYearChart
+        fields = ("name","total_amount","month","amount")

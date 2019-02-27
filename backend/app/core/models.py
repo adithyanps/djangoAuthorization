@@ -4,6 +4,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
                                         PermissionsMixin
 from django.conf import settings
+import json
+
 
 # Create your models here.
 
@@ -83,7 +85,6 @@ class P_Invoice(models.Model):
      name = models.CharField(max_length=50,null=False)
      date = models.DateField()
      total_amount = models.DecimalField(max_digits=15,decimal_places=2)
-
      # def __str__(self):
      #     return self.invoice
 
@@ -96,3 +97,13 @@ class C_Invoice(models.Model):
 
     # def __str__(self):
     #     return self.item
+
+class DateChart(models.Model):
+    year = models.CharField(max_length=50)
+    total_amount = models.DecimalField(max_digits=15,decimal_places=2)
+
+class CustomersYearChart(models.Model):
+    name = models.CharField(max_length=255)
+    total_amount = models.DecimalField(max_digits=15,decimal_places=2)
+    month = models.CharField(max_length=255)
+    amount = models.CharField(max_length=255)
